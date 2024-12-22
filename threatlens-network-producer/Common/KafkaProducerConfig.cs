@@ -2,7 +2,7 @@
 {
     public class KafkaProducerConfig
     {
-        public string BootstrapServers { get; set; } = "localhost:9092";
+        public string BootstrapServers { get; set; } = "localhost:29092";
         public string Topic { get; set; } = "network-packets";
     }
 

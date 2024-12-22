@@ -30,7 +30,7 @@ builder.Services.AddSingleton<PacketCaptureService>();
 
 builder.Services.AddSingleton(new KafkaProducerConfig
 {
-    BootstrapServers = "localhost:9092",
+    BootstrapServers = "localhost:29092",
     Topic = "network-packets"
 });
 

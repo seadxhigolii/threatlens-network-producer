@@ -19,7 +19,18 @@ namespace threatlens_network_producer.Services
         public async Task ProduceAsync(object data)
         {
             var jsonData = JsonSerializer.Serialize(data);
-            await _producer.ProduceAsync(_topic, new Message<Null, string> { Value = jsonData });
+            try
+            {
+                var deliveryResult = await _producer.ProduceAsync(
+                    _topic,
+                    new Message<Null, string> { Value = jsonData }
+                );
+                Console.WriteLine($"Message delivered to {deliveryResult.TopicPartitionOffset}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to produce message: {ex.Message}");
+            }
         }
     }
 }
